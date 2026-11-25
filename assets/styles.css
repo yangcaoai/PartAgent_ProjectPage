@@ -139,11 +139,14 @@ nav a:hover { color: var(--ink-accent); text-decoration: underline; text-underli
   justify-content: center;
   gap: .25rem clamp(.65rem, 1.3vw, 1.2rem);
   margin: .45rem auto 0;
+  padding: 0;
+  list-style: none;
   color: var(--muted);
   font-size: .95rem;
   line-height: 1.5;
 }
-.affiliations > span { max-width: 100%; text-wrap: balance; }
+.affiliations > * { display: block; max-width: 100%; text-wrap: balance; }
+.affiliations > *::marker { content: none; }
 .hero-links {
   display: flex;
   align-items: center;
