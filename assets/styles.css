@@ -129,20 +129,13 @@ nav a:hover { color: var(--ink-accent); text-decoration: underline; text-underli
 }
 .authors a { text-decoration: none; white-space: nowrap; }
 .authors a:hover, .authors a:focus-visible { text-decoration: underline; text-underline-offset: .22em; }
-.hero-links, .resource-links, .demo-links {
+.hero-links {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-}
-.hero-links { gap: .75rem 1.45rem; margin-top: 1.4rem; }
-.resource-links { gap: .55rem; }
-.demo-links { gap: 1.1rem; padding-left: 1.45rem; border-left: 1px solid var(--rule); }
-.demo-links a { padding-block: .35rem; color: #54446e; font-size: .92rem; font-weight: 560; text-underline-offset: .24em; text-decoration-color: #c7bad9; }
-.demo-links a:hover { color: var(--ink-accent); text-decoration-color: currentColor; }
-@media (max-width: 44rem) {
-  .hero-links { flex-direction: column; }
-  .demo-links { padding-left: 0; border-left: 0; }
+  gap: .55rem;
+  margin-top: 1.4rem;
 }
 .hero-link {
   display: inline-flex;
