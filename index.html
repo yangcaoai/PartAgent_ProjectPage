@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PartAgent is a training-free agentic framework for 3D part segmentation via expert integration and observation-driven closed-loop refinement.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="assets/robot-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement</title>
+  <script src="assets/script.js" defer></script>
+  <script src="assets/view-models.js" defer></script>
+  <script src="assets/viewer.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top" aria-label="PartAgent home">
+        <img class="mark" src="assets/robot-mark.png" alt="" width="36" height="36">
+        PartAgent
+      </a>
+      <nav aria-label="Page sections">
+        <a href="#method">Method</a>
+        <a href="#interactive">3D Demo</a>
+        <a href="#comparisons">Comparisons</a>
+        <a href="#results">Results</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell">
+        <div class="hero-stack">
+          <div class="hero-copy">
+            <h1 id="hero-title">
+              <span class="project-name">PartAgent</span>
+              <span class="paper-title">Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement</span>
+            </h1>
+            <ul class="authors" aria-label="Authors">
+              <li><a href="https://yangcaoai.github.io/">Yang Cao</a></li>
+              <li><a href="https://czvvd.github.io/homepage/">Zhe Zhu</a></li>
+              <li><a href="https://graphic-kiliani.github.io/homepage/">Yiheng Zhang</a></li>
+              <li><a href="https://xtudbxk.github.io/">Zhengqiang Zhang</a></li>
+              <li><a href="https://scholar.google.com/citations?user=ccgdLGsAAAAJ">Haoyuan Li</a></li>
+              <li><a href="https://openreview.net/profile?id=~Le_Wan1">Le Wan</a></li>
+              <li><a href="https://www.danxurgb.net/">Dan Xu</a></li>
+            </ul>
+            <div class="hero-links">
+              <div class="resource-links" role="group" aria-label="Paper and code">
+                <a class="hero-link hero-link-primary" href="https://arxiv.org/pdf/2611.32554">Paper (PDF)</a>
+                <a class="hero-link" href="https://arxiv.org/abs/2611.32554">arXiv</a>
+                <a class="hero-link" href="https://github.com/yangcaoai/PartAgent_Agent_for_3D_Part_Seg">Code</a>
+              </div>
+              <div class="demo-links" role="group" aria-label="Videos">
+                <a href="#showcase">Watch showcase</a>
+                <a href="#method">See the method</a>
+              </div>
+            </div>
+          </div>
+
+          <figure class="demo" id="showcase" aria-label="3D segmentation showcase">
+            <div class="media-wrap">
+              <video id="showcase-video" width="1440" height="810" controls muted playsinline loop preload="metadata" poster="assets/showcase-poster.webp" aria-label="Showcase of PartAgent segmentations" data-autoplay>
+                <source src="assets/partagent-showcase.mp4" type="video/mp4">
+                <p><a href="assets/partagent-showcase.mp4">View the segmentation showcase</a>.</p>
+              </video>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="light abstract" aria-labelledby="abstract-title">
+      <div class="shell reading-width">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>Segmenting a 3D object into semantically meaningful parts requires joint reasoning about geometric structure and semantic context. Pretrained 3D experts provide spatially grounded region proposals, while 2D experts provide semantic cues for identifying object parts. The challenge is to integrate these complementary capabilities into a framework that can both produce meaningful part segmentations and progressively refine them. We present PartAgent, a training-free agentic framework for 3D part segmentation built upon two complementary modules: (i) Structural–Semantic Expert Integration combines regions predicted by the 3D expert with multiview semantic evidence from the 2D expert through image-to-surface correspondences, constructing compositional part partitions at multiple granularities. (ii) Observation-Driven Closed-Loop Partition Refinement observes the current partition and its supporting evidence to select targeted inspection, evidence repair, composition, or reselection actions. It verifies proposed changes and uses the updated state and action outcomes to guide subsequent decisions. On PartObjaverse-Tiny-WT, PartAgent achieves 68.41 mIoU, outperforming the strongest competing method by 8.53 points. Across 3DCoMPaT200, PartNeXt, PartNetE, and PartObjaverse-Tiny, PartAgent achieves the highest mIoU on each dataset, averaging 69.36 across the four datasets, 7.28 points above the highest mean among competing methods. All code and results will be released.</p>
+      </div>
+    </section>
+
+    <section class="light method-section" id="method" aria-labelledby="method-title">
+      <div class="shell">
+        <div class="section-intro viewer-heading">
+          <h2 id="method-title">How PartAgent works</h2>
+          <p id="method-description">Follow one tractor from 3D expert regions and 2D semantic masks to the initial partition. <span class="next-sentence">Then see what prompts the agent to inspect the rear wheel, regroup its regions, and verify the change.</span></p>
+        </div>
+        <div class="hero-stack">
+          <figure class="demo" id="demo" aria-labelledby="method-title">
+            <div class="media-wrap">
+              <video id="method-film" width="1440" height="810" controls muted playsinline loop preload="metadata" poster="assets/method-poster.webp" aria-label="Structural–Semantic Expert Integration and Observation-Driven Closed-Loop Partition Refinement on the same tractor" aria-describedby="method-description" data-autoplay>
+                <source src="assets/partagent-method.mp4" type="video/mp4">
+                <p><a href="assets/partagent-method.mp4">View the method walkthrough</a>.</p>
+              </video>
+            </div>
+          </figure>
+        </div>
+
+        <div class="story" aria-label="Jump to a method stage">
+          <button class="story-step" type="button" data-time="0" aria-controls="method-film" disabled>
+            <span class="step-time">0:00</span>
+            <span class="step-name">Shared multiview evidence</span>
+            <span class="step-copy">Map 2D semantic masks onto the mesh to refine the 3D expert regions.</span>
+          </button>
+          <button class="story-step" type="button" data-time="12" aria-controls="method-film" disabled>
+            <span class="step-time">0:12</span>
+            <span class="step-name">Candidate partitions</span>
+            <span class="step-copy">Group the integrated leaves at multiple granularities and select the initial partition.</span>
+          </button>
+          <button class="story-step" type="button" data-time="24" aria-controls="method-film" disabled>
+            <span class="step-time">0:24</span>
+            <span class="step-name">Observe + inspect</span>
+            <span class="step-copy">Inspect the rear wheel in the geometry, current partition, leaf IDs, and 2D mask.</span>
+          </button>
+          <button class="story-step" type="button" data-time="37" aria-controls="method-film" disabled>
+            <span class="step-time">0:37</span>
+            <span class="step-name">Compose</span>
+            <span class="step-copy">Separate the fender from the tire and merge the two regions of the same wheel.</span>
+          </button>
+          <button class="story-step" type="button" data-time="45" aria-controls="method-film" disabled>
+            <span class="step-time">0:45</span>
+            <span class="step-name">Verify + update</span>
+            <span class="step-copy">Verify the proposal across views. The updated state and feedback guide inspection of the exhaust.</span>
+          </button>
+        </div>
+
+        <div class="methods">
+          <article class="method">
+            <span class="method-tag" aria-hidden="true">SSEI</span>
+            <div>
+              <h3>Structural–Semantic Expert Integration</h3>
+              <p>PartAgent uses image-to-surface correspondences to map multiview semantic evidence onto the 3D expert regions. On the tractor, the fender and part of the tire become distinct integrated leaves within one such region. The mask tree records groupings of leaves. A vision–language model (VLM) proposes additional groupings in a directed acyclic graph (DAG). From these groups, PartAgent builds candidate partitions at multiple granularities. The VLM compares their projections with the original renders and semantic evidence to select the initial partition.</p>
+            </div>
+          </article>
+          <article class="method">
+            <span class="method-tag" aria-hidden="true">CLR</span>
+            <div>
+              <h3>Observation-Driven Closed-Loop Partition Refinement</h3>
+              <p>The VLM observes the current partition alongside the geometry, leaf IDs, and 2D masks in the same views. On the tractor, <em>Inspect</em> returns a closer view of the rear wheel. The fender and tire share a region, while the wheel is split in two. The agent chooses <em>Compose</em> to regroup the existing leaves. A separate VLM call checks the current partition and the proposal against the original renders. Once the change is accepted, the updated state and verification feedback guide the next inspection of the exhaust.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="light interactive" id="interactive" aria-labelledby="interactive-title" data-model-viewer data-viewer-mode="poster">
+      <div class="shell">
+        <div class="section-intro viewer-heading">
+          <h2 id="interactive-title">Explore the segmentations in 3D</h2>
+          <p>Choose an object to explore PartAgent’s final segmentation. Each color marks a different part.</p>
+        </div>
+        <div class="model-gallery">
+          <div class="model-toolbar">
+            <h3 id="model-name" aria-live="polite">Biped robot</h3>
+            <div class="model-actions" data-viewer-actions hidden>
+              <button type="button" data-viewer-spin aria-controls="model-canvas" aria-label="Automatic rotation" aria-pressed="true"><span data-spin-text>Pause rotation</span></button>
+              <button type="button" data-viewer-reset aria-controls="model-canvas">Reset view</button>
+            </div>
+          </div>
+          <div class="model-stage">
+            <img id="model-poster" src="assets/model-biped-robot.webp" alt="Final part segmentation of the biped robot." width="800" height="600">
+            <canvas id="model-canvas" width="960" height="540" aria-label="Interactive final segmentation of the biped robot" aria-describedby="model-instructions" tabindex="0" hidden></canvas>
+          </div>
+          <div class="model-picker" role="group" aria-label="Choose a 3D object" data-model-picker hidden></div>
+        </div>
+        <p id="model-instructions" hidden>Drag or use the arrow keys to rotate the object.</p>
+      </div>
+    </section>
+
+    <section class="light comparisons" id="comparisons" aria-labelledby="comparisons-title">
+      <div class="shell comparison-shell">
+        <div class="section-intro comparison-head">
+          <h2 id="comparisons-title">Compare part segmentations</h2>
+          <p>Each row shows the same object from the same viewpoint and at the same scale across all five methods.</p>
+        </div>
+        <p class="comparison-hint" id="comparison-hint">Scroll sideways to compare all five methods.</p>
+        <div class="comparison-scroll" role="region" aria-label="Six objects segmented by five methods" aria-describedby="comparison-hint" tabindex="0">
+          <div class="comparison-matrix">
+            <div class="comparison-labels">
+              <span>SAMPart3D</span><span>PartField</span><span>P3-SAM</span><span>PartSAM</span><span class="ours">PartAgent</span>
+            </div>
+              <figure class="comparison-row">
+                <img src="assets/fig6-fish.webp" width="1720" height="336" loading="lazy" alt="Decorative fish segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Decorative fish</strong><span>PartAgent keeps the dorsal and tail fins as one part each.</span></figcaption>
+              </figure>
+              <figure class="comparison-row">
+                <img src="assets/fig6-well.webp" width="1720" height="336" loading="lazy" alt="Water well segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Water well</strong><span>PartAgent separates the roof fittings and segments the roof surface and stone wall as one part each.</span></figcaption>
+              </figure>
+              <figure class="comparison-row">
+                <img src="assets/fig6-chest.webp" width="1720" height="336" loading="lazy" alt="Wooden chest segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Wooden chest</strong><span>PartAgent separates the lid from the body and keeps the handle and latch distinct.</span></figcaption>
+              </figure>
+              <figure class="comparison-row">
+                <img src="assets/compare-hammer.webp" width="1720" height="336" loading="lazy" alt="Decorative hammer segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Decorative hammer</strong><span>The shaft forms a single part, distinct from the head and end cap.</span></figcaption>
+              </figure>
+              <figure class="comparison-row">
+                <img src="assets/compare-bucket.webp" width="1720" height="336" loading="lazy" alt="Lidded bucket segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Lidded bucket</strong><span>The lid, handle and body are separate parts.</span></figcaption>
+              </figure>
+              <figure class="comparison-row">
+                <img src="assets/compare-chandelier.webp" width="1720" height="336" loading="lazy" alt="Suspended chandelier segmentations, from left to right, by SAMPart3D, PartField, P3-SAM, PartSAM, and PartAgent.">
+                <figcaption><strong>Suspended chandelier</strong><span>The outer rim forms one part, separate from the suspension rods.</span></figcaption>
+              </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="light results" id="results" aria-labelledby="results-title">
+      <div class="shell benchmark-shell">
+        <div class="section-intro benchmark-heading">
+          <h2 id="results-title">Benchmark results</h2>
+          <p>Mask Match mIoU (%) pairs each ground-truth part mask with its best-matching predicted candidate mask. Scores are averaged over objects. Higher is better.</p>
+        </div>
+        <figure class="benchmark">
+          <figcaption>
+            <h3 id="benchmark-watertight">PartObjaverse-Tiny-WT</h3>
+            <p>Scores by category. Overall averages across all 200 objects.</p>
+          </figcaption>
+          <div class="benchmark-scroll" tabindex="0" role="region" aria-labelledby="benchmark-watertight">
+            <table aria-labelledby="benchmark-watertight">
+              <thead><tr><th scope="col">Method</th><th scope="col">Human</th><th scope="col">Animals</th><th scope="col">Daily</th><th scope="col">Build.</th><th scope="col">Trans.</th><th scope="col">Plants</th><th scope="col">Food</th><th scope="col">Elec.</th><th scope="col">Overall</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Find3D</th><td>24.58</td><td>23.19</td><td>24.00</td><td>14.69</td><td>12.72</td><td>23.06</td><td>29.96</td><td>18.49</td><td>19.90</td></tr>
+                <tr><th scope="row">SAMPart3D</th><td>60.39</td><td>70.73</td><td>63.03</td><td>50.59</td><td>51.78</td><td>65.18</td><td>70.53</td><td>58.33</td><td>59.53</td></tr>
+                <tr><th scope="row">PartField</th><td>61.54</td><td>65.83</td><td>69.19</td><td>47.83</td><td>48.79</td><td>65.36</td><td>73.31</td><td>62.77</td><td>59.88</td></tr>
+                <tr><th scope="row">P3-SAM</th><td>59.65</td><td>57.68</td><td>61.60</td><td>42.99</td><td>49.65</td><td>56.56</td><td>64.47</td><td>55.22</td><td>54.85</td></tr>
+                <tr><th scope="row">PartSAM</th><td>54.93</td><td>61.10</td><td>56.47</td><td>40.97</td><td>48.74</td><td>61.85</td><td>49.38</td><td>53.80</td><td>53.12</td></tr>
+                <tr class="ours"><th scope="row">PartAgent</th><td>70.97</td><td>71.00</td><td>70.92</td><td>56.40</td><td>62.93</td><td>75.40</td><td>78.00</td><td>71.61</td><td>68.41</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="benchmark-note">PartAgent leads the strongest baseline, PartField, by <strong>8.53 points</strong> overall.</p>
+        </figure>
+        <figure class="benchmark">
+          <figcaption>
+            <h3 id="benchmark-multiple">Four additional benchmarks</h3>
+            <p>The mean gives equal weight to the four dataset scores.</p>
+          </figcaption>
+          <div class="benchmark-scroll" tabindex="0" role="region" aria-labelledby="benchmark-multiple">
+            <table aria-labelledby="benchmark-multiple">
+              <thead><tr><th scope="col">Method</th><th scope="col">3DCoMPaT200</th><th scope="col">PartNeXt</th><th scope="col">PartNetE</th><th scope="col">PartObjaverse-Tiny</th><th scope="col">Mean</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Find3D</th><td>32.21</td><td>33.59</td><td>22.54</td><td>21.47</td><td>27.45</td></tr>
+                <tr><th scope="row">SAMPart3D</th><td>55.16</td><td>59.26</td><td>54.49</td><td>54.33</td><td>55.81</td></tr>
+                <tr><th scope="row">PartField</th><td>60.70</td><td>66.01</td><td>63.32</td><td>58.27</td><td>62.08</td></tr>
+                <tr><th scope="row">P3-SAM</th><td>51.80</td><td>59.79</td><td>59.63</td><td>55.22</td><td>56.61</td></tr>
+                <tr><th scope="row">PartSAM</th><td>57.34</td><td>62.23</td><td>54.97</td><td>65.58</td><td>60.03</td></tr>
+                <tr class="ours"><th scope="row">PartAgent</th><td>67.82</td><td>72.42</td><td>71.43</td><td>65.76</td><td>69.36</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="benchmark-note">PartAgent leads the strongest baseline, PartField, by <strong>7.28 points</strong> on the four-dataset mean.</p>
+        </figure>
+      </div>
+    </section>
+    <section class="light citation" id="citation" aria-labelledby="citation-title">
+      <div class="shell">
+        <h2 id="citation-title">BibTeX</h2>
+        <pre><code>@article{cao2026partagent,
+  title = {PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement},
+  author = {Cao, Yang and Zhu, Zhe and Zhang, Yiheng and
+            Zhang, Zhengqiang and Li, Haoyuan and Wan, Le and Xu, Dan},
+  journal = {arXiv preprint arXiv:2611.32554},
+  year = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="light">
+    <div class="shell footer-inner">
+      <span>PartAgent</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
